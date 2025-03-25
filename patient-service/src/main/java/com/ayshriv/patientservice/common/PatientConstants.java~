@@ -1,0 +1,6 @@
+package com.ayshriv.patientservice.common;
+
+public class PatientConstants {
+    private PatientConstants() {}
+
+}

@@ -1,0 +1,4 @@
+package com.ayshriv.patientservice.repository;
+
+public class PatientRepository {
+}

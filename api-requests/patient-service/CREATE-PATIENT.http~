@@ -1,0 +1,15 @@
+### POST request to example server
+POST http://localhost:8080/api/patients/create
+Content-Type: application/json
+
+{
+  "first_name": "Rahul",
+  "last_name": "Sharma",
+  "email": "rahul.sharma@example.com",
+  "phone_number": "9876543210",
+  "address": "123, MG Road, Bangalore, Karnataka, India",
+  "gender": "MALE",
+  "date_of_birth": "1995-08-15"
+}
+
+###
