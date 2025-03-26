@@ -3,6 +3,7 @@ package com.ayshriv.patientservice.service.impl;
 import com.ayshriv.patientservice.dto.patient.PatientRequestDTO;
 import com.ayshriv.patientservice.dto.patient.PatientResponseDTO;
 import com.ayshriv.patientservice.entity.Patient;
+import com.ayshriv.patientservice.exception.EmailAlreadyExistsException;
 import com.ayshriv.patientservice.mapper.PatientMapper;
 import com.ayshriv.patientservice.repository.PatientRepository;
 import com.ayshriv.patientservice.service.IPatientService;
@@ -24,6 +25,9 @@ public class PatientServiceImpl implements IPatientService {
     @Override
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
         LOGGER.info("Start: Processing patient creation for details - {}", patientRequestDTO);
+        if (patientRepository.existsByEmail(patientRequestDTO.getEmail())) {
+            throw new EmailAlreadyExistsException("A patient with this email already exists " + patientRequestDTO.getEmail());
+        }
         Patient patient = mapToEntity(patientRequestDTO);
         PatientResponseDTO patientResponse=null;
         patient.setActive(true);

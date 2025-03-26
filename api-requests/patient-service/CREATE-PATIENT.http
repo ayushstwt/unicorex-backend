@@ -5,8 +5,8 @@ Content-Type: application/json
 {
   "first_name": "Rahul",
   "last_name": "Sharma",
-  "email": "rahul.sharma@gmail.com",
-  "phone_number": "9876543219",
+  "email": "rahul.sharma@gmailu.com",
+  "phone_number": "9876543212",
   "address": "123, MG Road, Bangalore, Karnataka, India",
   "gender": "MALE",
   "date_of_birth": "1995-08-15"

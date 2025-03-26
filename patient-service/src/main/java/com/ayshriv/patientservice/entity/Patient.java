@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name="patient")
-@NoArgsConstructor
-@AllArgsConstructor
 public class Patient extends BaseEntity {
 
     @Column(nullable = false,name="first_name")
