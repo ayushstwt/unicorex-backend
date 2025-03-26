@@ -1,0 +1,15 @@
+### update an existing patient entity
+PUT http://localhost:8080/api/patients/update/1
+Content-Type: application/json
+
+{
+  "first_name": "Ayush",
+  "last_name": "Sharma",
+  "email": "rahul.sharma@gmai.com",
+  "phone_number": "9876543232",
+  "address": "123, MG Road, Bangalore, Karnataka, India",
+  "gender": "FEMALE",
+  "date_of_birth": "2003-03-13"
+}
+
+###

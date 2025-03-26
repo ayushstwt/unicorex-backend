@@ -1,4 +1,4 @@
-package com.ayshriv.patientservice.dto.patient;
+package com.ayshriv.patientservice.resources.dto.patient;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;

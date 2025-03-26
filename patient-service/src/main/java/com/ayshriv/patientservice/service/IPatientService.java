@@ -1,7 +1,9 @@
 package com.ayshriv.patientservice.service;
 
-import com.ayshriv.patientservice.dto.patient.PatientRequestDTO;
-import com.ayshriv.patientservice.dto.patient.PatientResponseDTO;
+import com.ayshriv.patientservice.common.CoreXStatus;
+import com.ayshriv.patientservice.resources.dto.patient.CommonPatientRequest;
+import com.ayshriv.patientservice.resources.dto.patient.PatientRequestDTO;
+import com.ayshriv.patientservice.resources.dto.patient.PatientResponseDTO;
 import java.util.List;
 
 public interface IPatientService {
@@ -18,26 +20,26 @@ public interface IPatientService {
      * @param patientRequestDTO contains the patient details
      * @return the updated patient
      */
-    PatientResponseDTO updatePatient(PatientRequestDTO patientRequestDTO);
+    PatientResponseDTO updatePatient(Long id,PatientRequestDTO patientRequestDTO);
 
     /**
      * Returns the patient with the given patientId
-     * @param patientRequestDTO contains the patientId
+     * @param patientId the patientId to fetch
      * @return the patient with the given patientId
      */
-    PatientResponseDTO getPatient(PatientRequestDTO patientRequestDTO);
+    PatientResponseDTO getPatient(Long patientId);
 
     /**
      * Returns a list of all the patients
-     * @param patientRequestDTO
+     * @param commonPatientRequest contains the pagination and sorting details
      * @return a list of all the patients
      */
-    List<PatientResponseDTO> getAllPatient(PatientRequestDTO patientRequestDTO);
+    CoreXStatus getAllPatient(CommonPatientRequest commonPatientRequest);
 
     /**
      * Deletes the patient with the given patientId
      * @param patientId the patientId to delete
      * @return true if the patient is deleted successfully, false otherwise
      */
-    boolean deletePatient(Long patientId);
+    void deletePatient(Long patientId);
 }

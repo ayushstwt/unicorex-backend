@@ -67,5 +67,16 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    // Handle EmailAlreadyExistsException
+    @ExceptionHandler(PhoneNumberAlreadyExistsException.class)
+    public ProblemDetail handlePhoneNumberAlreadyExistsException(PhoneNumberAlreadyExistsException ex)
+    {
+        LOGGER.error("Phone number already exists - {}", ex.getMessage());
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
+        problemDetail.setProperty("timestamp", Instant.now());
+        problemDetail.setProperty("status_type", Constants.STATUS_FAILURE);
+        return problemDetail;
+    }
+
 
 }

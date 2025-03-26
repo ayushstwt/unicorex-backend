@@ -1,7 +1,7 @@
 package com.ayshriv.patientservice.mapper;
 
-import com.ayshriv.patientservice.dto.patient.PatientRequestDTO;
-import com.ayshriv.patientservice.dto.patient.PatientResponseDTO;
+import com.ayshriv.patientservice.resources.dto.patient.PatientRequestDTO;
+import com.ayshriv.patientservice.resources.dto.patient.PatientResponseDTO;
 import com.ayshriv.patientservice.entity.Patient;
 import com.ayshriv.patientservice.enums.Gender;
 
