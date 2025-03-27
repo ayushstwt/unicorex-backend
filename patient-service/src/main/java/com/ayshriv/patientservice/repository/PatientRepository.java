@@ -16,6 +16,6 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     @Query("SELECT p FROM Patient p WHERE p.isActive =true AND p.isDeleted =false Order By p.updatedAt ASC")
     public Page<Patient> findAllASC(Pageable pageable);
 
-    @Query("SELECT p FROM Patient p WHERE p.isActive =true AND p.isDeleted =false Order By p.updatedAt D")
+    @Query("SELECT p FROM Patient p WHERE p.isActive =true AND p.isDeleted =false Order By p.updatedAt DESC")
     public Page<Patient> findAllDESC(Pageable pageable);
 }

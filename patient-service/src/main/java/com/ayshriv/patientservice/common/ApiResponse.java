@@ -6,9 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> {
     @JsonProperty("status_type")
@@ -31,5 +29,37 @@ public class ApiResponse<T> {
     }
 
     public ApiResponse() {
+    }
+
+    public String getStatusType() {
+        return statusType;
+    }
+
+    public void setStatusType(String statusType) {
+        this.statusType = statusType;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Object getMetaData() {
+        return metaData;
+    }
+
+    public void setMetaData(Object metaData) {
+        this.metaData = metaData;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
     }
 }

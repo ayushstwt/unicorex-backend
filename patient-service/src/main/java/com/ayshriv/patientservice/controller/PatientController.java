@@ -8,6 +8,8 @@ import com.ayshriv.patientservice.resources.dto.patient.CommonPatientRequest;
 import com.ayshriv.patientservice.resources.dto.patient.PatientRequestDTO;
 import com.ayshriv.patientservice.resources.dto.patient.PatientResponseDTO;
 import com.ayshriv.patientservice.service.IPatientService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +31,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/patients")
 @Validated
+@Tag(name = "Patient", description = "API for managing Patients")
 public class PatientController {
 
     private static final Logger LOGGER=LoggerFactory.getLogger(PatientController.class);
@@ -37,6 +40,7 @@ public class PatientController {
     private IPatientService patientService;
 
     @PostMapping("/create")
+    @Operation(summary = "Create a new Patient")
     public ResponseEntity<?> createPatient(@RequestBody @Valid PatientRequestDTO patientRequestDTO) {
         LOGGER.info("Start: Creating patient with details - {}", patientRequestDTO);
         PatientResponseDTO patient = patientService.createPatient(patientRequestDTO);
@@ -47,6 +51,7 @@ public class PatientController {
     }
 
     @PutMapping("/update/{id}")
+    @Operation(summary = "Update a Patient")
     public ResponseEntity<?> updatePatient(@PathVariable String id, @RequestBody @Valid PatientRequestDTO patientRequestDTO) {
         LOGGER.info("Start: Updating patient with details - {}", patientRequestDTO);
         PatientResponseDTO patient = patientService.updatePatient(Long.parseLong(id),patientRequestDTO);
@@ -57,6 +62,7 @@ public class PatientController {
     }
 
     @GetMapping("/get/{id}")
+    @Operation(summary = "Get a Patient")
     public ResponseEntity<?> getPatient(@PathVariable String id) {
         LOGGER.info("Start: Getting patient with ID - {}", id);
         PatientResponseDTO patient = patientService.getPatient(Long.parseLong(id));
@@ -66,7 +72,9 @@ public class PatientController {
                 .body(new ApiResponse(Constants.STATUS_SUCCESS,PatientConstants.PATIENT_FOUND, null, patient));
     }
 
+
     @DeleteMapping("/delete/{id}")
+    @Operation(summary = "Delete a Patient")
     public ResponseEntity<?> deletePatient(@PathVariable String id) {
         LOGGER.info("Start: Deleting patient with ID - {}", id);
         patientService.deletePatient(Long.parseLong(id));
@@ -76,7 +84,8 @@ public class PatientController {
                 .body(new ApiResponse(Constants.STATUS_SUCCESS,PatientConstants.PATIENT_DELETED, null, null));
     }
 
-    @GetMapping("/getAll")
+    @PostMapping("/getAll")
+    @Operation(summary = "Get All Patients")
     public ResponseEntity<?> getAllPatient(@RequestBody CommonPatientRequest commonPatientRequest) {
         LOGGER.info("Start: Getting all patients");
         CoreXStatus patient = patientService.getAllPatient(commonPatientRequest);
